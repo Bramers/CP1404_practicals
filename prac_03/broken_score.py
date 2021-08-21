@@ -21,6 +21,7 @@ import random
 
 
 def main():
+    """Get a score and print the status"""
     score = float(input("Enter score: "))
     while score < 0 or score > 100:
         print("Invalid score")
@@ -34,6 +35,7 @@ def main():
 
 
 def determine_score_status(score):
+    """Determine the status of score"""
     if score < 50:
         result = "Bad"
     elif score < 90:
