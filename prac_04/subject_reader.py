@@ -30,6 +30,7 @@ def get_data():
 
 
 def print_subject_details(data):
+    """Print subject details in format: subject, lecturer, number of students"""
     for subject_data in data:
         print("{} is taught by {:12} and has {:3} students".format(*subject_data))
 
