@@ -14,4 +14,3 @@ for word in words:
         new_words.append(word)
 for word in new_words:
     print(f"{word:{length_of_longest_word}} : {count_dict[word]}")
-
