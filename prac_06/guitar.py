@@ -1,10 +1,8 @@
-"""module docstring"""
 VINTAGE_AGE = 50
 CURRENT_YEAR = 2021
 
 
 class Guitar:
-    """class """
 
     def __init__(self, name="", year=0, cost=0.0):
         self.name = name
@@ -19,4 +17,4 @@ class Guitar:
         return age
 
     def is_vintage(self):
-        return self.get_age() > VINTAGE_AGE
+        return self.get_age() >= VINTAGE_AGE

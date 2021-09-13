@@ -1,4 +1,5 @@
-from guitar import Guitar
+from prac_06.guitar import Guitar
+
 guitar = Guitar("Gibson L-5 CES", 1922, 16035.40)
 another_guitar = Guitar("Another_guitar", 2013, 1)
 

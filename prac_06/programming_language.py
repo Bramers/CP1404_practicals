@@ -9,7 +9,8 @@ class ProgrammingLanguage:
 
     def __str__(self):
         """Return the string of the programming languages values """
-        return "{}, {} Typing, Reflection={}, First appeared in {}".format(self.name, self.typing, self.reflection, self.year)
+        return "{}, {} Typing, Reflection={}, First appeared in {}".format(self.name, self.typing, self.reflection,
+                                                                           self.year)
 
     def is_dynamic(self):
         """Determine if typing is dynamic"""
