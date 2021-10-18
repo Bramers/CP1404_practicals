@@ -5,38 +5,39 @@ import os
 
 def main():
     """Demo os module functions."""
-    print("Starting directory is: {}".format(os.getcwd()))
     os.chdir('Lyrics')
-
-    for filename in os.listdir('.'):
-        if os.path.isdir(filename):
-            continue
-
-        new_name = get_fixed_filename(filename)
-        print("Renaming {} to {}".format(filename, new_name))
-
-        os.rename(filename, new_name)
+    for directory_name, subdirectories, filenames in os.walk('.'):
+        for filename in filenames:
+            new_name = get_fixed_filename(filename)
+            full_name = os.path.join(directory_name, filename)
+            full_corrected_name = os.path.join(directory_name, new_name)
+            os.rename(full_name, full_corrected_name)
 
 
 def get_fixed_filename(filename):
     """Return a 'fixed' version of filename."""
     new_name = filename.replace(" ", "_").replace(".TXT", ".txt")
+    try:
+        for i, character in enumerate(new_name):
+            if new_name[i].islower() or new_name[i].isupper():
+                if new_name[i + 1].isupper():
+                    new_name = new_name[:i + 1] + "_" + new_name[i + 1:]
+    except IndexError:
+        pass
     return new_name.title()
 
 
-def demo_walk():
-    """Process all subdirectories using os.walk()."""
-    os.chdir('Lyrics')
-    for directory_name, subdirectories, filenames in os.walk('.'):
-        print("Directory:", directory_name)
-        print("\tcontains subdirectories:", subdirectories)
-        print("\tand files:", filenames)
-        print("(Current working directory is: {})".format(os.getcwd()))
-
-        for filename in filenames:
-            full_name = os.path.join(directory_name, filename)
-            new_name = os.path.join(directory_name, get_fixed_filename(filename))
-            os.rename(full_name, new_name)
-
-
 main()
+
+
+# try:
+#     for i, character in enumerate(filename):
+#         new_name += character
+#         if filename[i].islower():
+#             if filename[i + 1].isupper():
+#                 new_name += "_"
+# elif filename[i] == " ":
+# new_name += character.replace(" ", "_")
+# except IndexError:
+#     print("index")
+# corrected_name = new_name.replace(".TXT", ".txt")
